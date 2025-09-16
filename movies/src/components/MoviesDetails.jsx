@@ -6,7 +6,13 @@ function MoviesDetails({movieId, onClose}) {
         const [error, setError] = useState(null);
 
      useEffect(()=>{
-        async function getMoviesDe
+        async function getMoviesDetails(){
+            try {
+                
+            } catch (error) {
+                
+            }
+        }
      },[])   
     return (
         <div className='fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-900/95 backdrop-blur-sm overflow-auto'>
