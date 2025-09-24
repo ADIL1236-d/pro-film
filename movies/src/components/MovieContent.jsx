@@ -13,6 +13,7 @@ function MovieContent() {
     selectedMovieId,
     closeMovieDetails,
     error,  
+    addToWatchlist,
   } = useMovies();
 
   if(error){
@@ -67,13 +68,13 @@ function MovieContent() {
       title="Top Rated Movies" 
       subtile="Highest rated movies of all time" 
       movies={topRatedMovies} 
-      id="top_rated"
+      id="top-rated"
       />
       </div>
 
       {/* { conditional rendering } */}
      {selectedMovieId && (
-     <MoviesDetails movieId={selectedMovieId} onClose={closeMovieDetails} />
+     <MoviesDetails movieId={selectedMovieId} onClose={closeMovieDetails} addToWatchlist={addToWatchlist} />
       )}
   </>
   ); 

@@ -1,11 +1,18 @@
 import React from 'react'
 
 function Footer() {
+  const handleSubscribe = () => {
+    console.log('Newsletter subscription!');
+    // منطق الاشتراك في النشرة الإخبارية
+  };
+
   return (
     <footer className='bg-neutral-900 text-neutral-400 border-t border-neutral-800'>
         <div className='container mx-auto px-4 py-12'>
             <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
-                <div>
+                <div data-aos="fade-up" 
+                     data-aos-duration="1000" 
+                     data-aos-delay="200">
              <a href="/" className='inline-block mb-6'>
              <span className='text-purple-500 font-bold text-2xl'>
              Moviz<span className='text-white'>Land</span>
@@ -61,7 +68,7 @@ function Footer() {
               </div>
             </div>
 
-            <div>
+            <div data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
                 <h3 className='text-white font-semibold text-lg mb-4'>
                     Quick Links
                     </h3>
@@ -106,7 +113,7 @@ function Footer() {
                 </ul>
             </div>
 
-            <div>
+            <div data-aos="fade-up-right" data-aos-duration="1000" data-aos-delay="200">
                 <h3 className='text-white font-semibold text-lg mb-4'>Resources</h3>
                 <ul className='space-y-2 text-sm'>
                     <li>
@@ -137,7 +144,7 @@ function Footer() {
                    </ul>
                </div>
 
-               <div>
+               <div data-aos="fade-up-right" data-aos-duration="1000" data-aos-delay="200">
                <h3 className='text-white font-semibold text-lg mb-4'>
                 Newsletter
                 </h3>
@@ -152,13 +159,37 @@ function Footer() {
                         className='w-full bg-neutral-800 border-neutral-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/50 text-sm' 
                         />
                     </div>
-                    <button className='w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg transition-all text-sm'>
+                    
+                    {/* الزر المخصص بدلاً من الزر العادي */}
+                    <button data-aos="fade-down-right"
+                      type="button"
+                      onClick={handleSubscribe}
+                      className="relative w-full h-[40px] rounded-[10px] border-none cursor-pointer overflow-hidden
+                                 bg-gradient-to-r from-purple-800 via-purple-500 via-purple-600 via-purple-700 via-purple-500 to-purple-800
+                                 bg-[length:250%] bg-left
+                                 text-purple-200 font-medium
+                                 transition-all duration-1000 ease-in-out
+                                 hover:bg-right
+                                 active:scale-95
+                                 flex items-center justify-center text-sm"
+                    >
+                      {/* الخلفية السوداء */}
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+                                      w-[97%] h-[90%] rounded-[8px]
+                                      bg-black/[0.842]
+                                      transition-all duration-1000 ease-in-out
+                                      z-0">
+                      </div>
+                      
+                      {/* النص */}
+                      <span className="relative z-10 text-purple-300 font-medium">
                         Subscribe
+                      </span>
                     </button>
                 </form>
                </div>
             </div>
-            <div className='border-t border-neutral-800 mt-10 pt-6 flex flex-col md:flex-row justify-between'>
+            <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" className='border-t border-neutral-800 mt-10 pt-6 flex flex-col md:flex-row justify-between'>
                 <p className='text-xs'> 
                 MovizLand. all rights reserved. <br className='md:hidden' />
                 <span className='hidden md:inline'>.</span>
@@ -169,19 +200,19 @@ function Footer() {
                 </p>
                <div className='flex space-x-4 mt-4 md:mt-0 text-xs'>
                <a 
-               href="Privacy Policy" 
+               href="#" 
                className='hover:text-purple-400 transition-all'
                >
                 Privacy Policy
                 </a>
                 <a 
-               href="Privacy Policy" 
+               href="#" 
                className='hover:text-purple-400 transition-all'
                >
                 Terms of Service
                 </a>
                 <a 
-               href="Privacy Policy" 
+               href="#" 
                className='hover:text-purple-400 transition-all'
                >
                 Cookie Policy
