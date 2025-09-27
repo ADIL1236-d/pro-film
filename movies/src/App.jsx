@@ -17,7 +17,7 @@ function App() {
       <MoviesProvider>
         <BrowserRouter>
           <div className='min-h-screen text-white bg-neutral-900'>
-            <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="">
               <Navbar />
               <main>
                 <Routes>
