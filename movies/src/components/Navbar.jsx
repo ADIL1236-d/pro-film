@@ -1,15 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useMovies } from '../contex/MoviesContext';
+import { useAuth } from '../context/AuthContext';
 import { searchMovies } from '../servise/api';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Clapperboard from './Clapperboard';
 AOS.init();
 
 
 function Navbar() {
   const {openMovieDetails} = useMovies();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false); 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -177,13 +180,50 @@ const handleNavigation = (section) => {
             >
               Top Rated
             </button>
-            <Link 
-              data-aos="fade-down" data-aos-easing="linear" data-aos-duration="3000"
-              to="/watchlist"
-              className='text-white hover:text-purple-400 transition-all'
-            >
-              Watchlist
-            </Link>
+            {user ? (
+              <>
+                <Link 
+                  data-aos="fade-down" data-aos-easing="linear" data-aos-duration="3000"
+                  to="/watchlist"
+                  className='text-white hover:text-purple-400 transition-all'
+                >
+                  Watchlist
+                </Link>
+                <div className="flex items-center space-x-4">
+                  <span className="text-purple-400">{user.name}</span>
+                  <button
+                    onClick={() => {
+                      logout();
+                      navigate('/');
+                    }}
+                    className="text-white hover:text-purple-400 transition-all"
+                  >
+                    Logout
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="flex items-center space-x-4">
+                <Link
+                  data-aos="fade-down"
+                  data-aos-easing="linear"
+                  data-aos-duration="3000"
+                  to="/login"
+                  className="text-white hover:text-purple-400 transition-all"
+                >
+                  Login
+                </Link>
+                <Link
+                  data-aos="fade-down"
+                  data-aos-easing="linear"
+                  data-aos-duration="3000"
+                  to="/register"
+                  className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-all"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            )}
     </nav>
 
     {/* desktop search */}
@@ -364,13 +404,47 @@ const handleNavigation = (section) => {
               >
                 Top Rated
               </button>
-              <Link
-                to='/watchlist'
-                onClick={() => setIsMobileMenuOpen(false)}
-                className='block text-white hover:text-purple-400 transition-colors py-2 w-full text-left'
-              >
-                Watchlist
-              </Link>
+              {user ? (
+                <>
+                  <Link
+                    to='/watchlist'
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className='block text-white hover:text-purple-400 transition-colors py-2 w-full text-left'
+                  >
+                    Watchlist
+                  </Link>
+                  <div className="py-2">
+                    <span className="block text-purple-400 mb-2">{user.name}</span>
+                    <button
+                      onClick={() => {
+                        logout();
+                        navigate('/');
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="text-white hover:text-purple-400 transition-colors w-full text-left"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className="py-2 space-y-2">
+                  <Link
+                    to="/login"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block text-white hover:text-purple-400 transition-colors"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-all text-center"
+                  >
+                    Sign Up
+                  </Link>
+                </div>
+              )}
       
       {/* mobile search */}
       <div className="relative mt-3 search-container">

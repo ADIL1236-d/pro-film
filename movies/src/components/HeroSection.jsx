@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useMovies } from '../contex/MoviesContext';
 import { getImageUrl } from '../servise/api';
+import PlayButton from './PlayButton';
 
 function HeroSection() {
   const {trendingMovies, loading} = useMovies();
@@ -141,40 +142,14 @@ function HeroSection() {
             </p>
             
             <div className='flex flex-wrap gap-4'>
-            <button 
-              data-aos="zoom-in"
-              data-aos-duration="800"
-              data-aos-delay="600"
-              className="relative z-10 text-white bg-gradient-to-r from-purple-600 to-purple-800 px-6 py-3 rounded-lg flex items-center gap-2 font-semibold tracking-wide uppercase text-lg transition-all duration-300 hover:shadow-2xl hover:scale-105"
-            >
-    <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      fill="currentColor" 
-      viewBox="0 0 24 24" 
-      className="w-5 h-5"
-    >
-      <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-2-6l6-4-6-4v8z"/>
-    </svg>
-    Watch Now
-  </button>
-
-  {/* Glow & Waves - Transparent & Light */}
-  <svg
-    className="absolute top-0 left-0 w-full h-full pointer-events-none scale-105 opacity-20 animate-pulse"
-    viewBox="0 0 2400 800"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <defs>
-      <linearGradient id="purple-grad-light" y2="100%" x2="50%" y1="0%" x1="50%">
-        <stop offset="0%" stop-opacity="0.3" stop-color="hsl(275, 80%, 60%)" />
-        <stop offset="100%" stop-opacity="0.2" stop-color="hsl(230, 70%, 50%)" />
-      </linearGradient>
-    </defs>
-    <path
-      fill="url(#purple-grad-light)"
-      d="M0,305 Q227,450 600,302 Q1010,450 1200,343 Q1379,450 1800,320 Q2153,450 2400,314 L2400,800 L0,800 Z"
-    />
-  </svg>
+              <div
+                data-aos="zoom-in"
+                data-aos-duration="800"
+                data-aos-delay="600"
+                className="relative z-10"
+              >
+                <PlayButton />
+              </div>
               
               <button 
                 data-aos="zoom-in"

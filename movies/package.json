@@ -13,13 +13,17 @@
     "@splinetool/react-spline": "^4.1.0",
     "@tailwindcss/vite": "^4.1.12",
     "aos": "^2.3.4",
+    "axios": "^1.6.2",
     "framer-motion": "^12.23.20",
     "lucide-react": "^0.542.0",
     "motion": "^12.23.20",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.1",
-    "tailwindcss": "^4.1.12"
+    "react-hook-form": "^7.49.2",
+    "@hookform/resolvers": "^3.3.2",
+    "tailwindcss": "^4.1.12",
+    "yup": "^1.3.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",

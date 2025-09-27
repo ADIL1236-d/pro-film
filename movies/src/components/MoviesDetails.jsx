@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { fetchMovieDetails, getMovieTrailer } from '../servise/api';
 import { useMovies } from '../contex/MoviesContext';
 import { useNavigate } from 'react-router-dom';
+import PlayButton from './PlayButton';
 
 function MoviesDetails({ movieId, onClose }) {
     const [movie, setMovie] = useState(null);
@@ -240,7 +241,7 @@ function MoviesDetails({ movieId, onClose }) {
 
                                     {/* buttons */}
                                     <div className='mt-8 flex flex-wrap gap-3'>
-                                        <button
+                                        <div
                                             onClick={async () => {
                                                 const trailer = await getMovieTrailer(movieId);
                                                 if (trailer) {
@@ -250,18 +251,9 @@ function MoviesDetails({ movieId, onClose }) {
                                                     alert('No trailer available for this movie');
                                                 }
                                             }}
-                                            className='bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-colors'
                                         >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="currentColor"
-                                                viewBox="0 0 24 24"
-                                                className="h-6 w-6 text-white"
-                                            >
-                                                <path d="M8 5v14l11-7z" />
-                                            </svg>
-                                            Watch Now
-                                        </button>
+                                            <PlayButton />
+                                        </div>
 
                                         <button
                                             onClick={() => {
