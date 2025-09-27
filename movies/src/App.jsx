@@ -17,18 +17,19 @@ function App() {
       <MoviesProvider>
         <BrowserRouter>
           <div className='min-h-screen text-white bg-neutral-900'>
-            <Navbar />
-            <main>
-              <Routes>
-                <Route path="/" element={<MovieContent />} />
-                <Route 
-                  path="/watchlist" 
-                  element={
-                    <ProtectedRoute>
-                      <WatchList />
-                    </ProtectedRoute>
-                  }
-                />
+            <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
+              <Navbar />
+              <main>
+                <Routes>
+                  <Route path="/" element={<MovieContent />} />
+                  <Route 
+                    path="/watchlist" 
+                    element={
+                      <ProtectedRoute>
+                        <WatchList />
+                      </ProtectedRoute>
+                    }
+                  />
                 <Route 
                   path="/login" 
                   element={<Login />} 
@@ -42,7 +43,8 @@ function App() {
             </main>
             <Footer />
             <ScrollToTop />
-          </div>
+              </div>
+            </div>
         </BrowserRouter>
       </MoviesProvider>
     </AuthProvider>
