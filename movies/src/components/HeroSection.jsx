@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useMovies } from '../contex/MoviesContext';
 import { getImageUrl } from '../servise/api';
-import PlayButton from './PlayButton';
+import SpecialPlayButton from './SpecialPlayButton';
+import BookmarkButton from './BookmarkButton';
 
 function HeroSection() {
   const {trendingMovies, loading} = useMovies();
@@ -148,29 +149,16 @@ function HeroSection() {
                 data-aos-delay="600"
                 className="relative z-10"
               >
-                <PlayButton />
+                <SpecialPlayButton />
               </div>
               
-              <button 
+              <div
                 data-aos="zoom-in"
                 data-aos-duration="800"
                 data-aos-delay="800"
-                className='bg-neutral-800/80 hover:bg-neutral-700/80 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-all border border-neutral-600 hover:scale-105'
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                >
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M12 8v8"></path>
-                  <path d="M8 12h8"></path>
-                </svg>
-                Add to Watchlist
-              </button>
+                <BookmarkButton />
+              </div>
             </div>
           </div>
         </div>

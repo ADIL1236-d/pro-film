@@ -34,21 +34,21 @@ const StyledWrapper = styled.div`
   }
 
   #clip {
-    --color: #2761c3;
+    --color: #8B5CF6;
     position: absolute;
     top: 0;
     overflow: hidden;
     width: 100%;
     height: 100%;
     border: 5px double var(--color);
-    box-shadow: inset 0px 0px 15px #195480;
+    box-shadow: inset 0px 0px 15px #8B5CF6;
     -webkit-clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
   }
 
   .arrow {
     position: absolute;
     transition: 0.2s;
-    background-color: #2761c3;
+    background-color: #800080;
     top: 35%;
     width: 11%;
     height: 30%;
@@ -65,13 +65,13 @@ const StyledWrapper = styled.div`
   }
 
   button:hover #rightArrow {
-    background-color: #27c39f;
+    background-color: purple;
     left: -15%;
     animation: 0.6s ease-in-out both infinite alternate rightArrow8;
   }
 
   button:hover #leftArrow {
-    background-color: #27c39f;
+    background-color: purple;
     left: 103%;
     animation: 0.6s ease-in-out both infinite alternate leftArrow8;
   }
@@ -80,8 +80,8 @@ const StyledWrapper = styled.div`
     position: absolute;
     width: 4em;
     height: 4em;
-    background-color: #2761c3;
-    box-shadow: inset 1px 1px 8px #2781c3;
+    background-color: #800080;
+    box-shadow: inset 1px 1px 8px #800080;
     transform: scale(1) rotate(45deg);
     transition: 0.2s;
   }
@@ -132,26 +132,26 @@ const StyledWrapper = styled.div`
 
   button:hover #clip {
     animation: 0.2s ease-in-out 0.55s both greenLight8;
-    --color: #27c39f;
+    --color: #800080;
   }
 
   @keyframes changeColor8 {
     from {
-      background-color: #2781c3;
+      background-color: #800080;
     }
 
     to {
-      background-color: #27c39f;
+      background-color: #800080;
     }
   }
 
   @keyframes lightEffect8 {
     from {
-      box-shadow: 1px 1px 5px #27c39f;
+      box-shadow: 1px 1px 5px #800080;
     }
 
     to {
-      box-shadow: 0 0 2px #27c39f;
+      box-shadow: 0 0 2px #800080;
     }
   }
 
@@ -160,7 +160,7 @@ const StyledWrapper = styled.div`
     }
 
     to {
-      box-shadow: inset 0px 0px 32px #27c39f;
+      box-shadow: inset 0px 0px 32px #800080;
     }
   }
 

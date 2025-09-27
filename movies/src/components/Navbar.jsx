@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { useMovies } from '../contex/MoviesContext';
 import { useAuth } from '../context/AuthContext';
 import { searchMovies } from '../servise/api';
+import AnimatedButton from './AnimatedButton';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -218,9 +219,8 @@ const handleNavigation = (section) => {
                   data-aos-easing="linear"
                   data-aos-duration="3000"
                   to="/register"
-                  className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-all"
                 >
-                  Sign Up
+                  <AnimatedButton text="Sign Up" />
                 </Link>
               </div>
             )}
@@ -439,9 +439,8 @@ const handleNavigation = (section) => {
                   <Link
                     to="/register"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md transition-all text-center"
                   >
-                    Sign Up
+                    <AnimatedButton text="Sign Up" />
                   </Link>
                 </div>
               )}
