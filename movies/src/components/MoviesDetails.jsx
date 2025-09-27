@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { fetchMovieDetails, getMovieTrailer } from '../servise/api';
 import { useMovies } from '../contex/MoviesContext';
 import { useNavigate } from 'react-router-dom';
-import PlayButton from './PlayButton';
+import SpecialPlayButton from './SpecialPlayButton';
+import BookmarkButton from './BookmarkButton';
 
 function MoviesDetails({ movieId, onClose }) {
     const [movie, setMovie] = useState(null);
@@ -240,7 +241,7 @@ function MoviesDetails({ movieId, onClose }) {
                                     </div>
 
                                     {/* buttons */}
-                                    <div className='mt-8 flex flex-wrap gap-3'>
+                                    <div className='mt-8 flex flex-wrap items-center gap-4'>
                                         <div
                                             onClick={async () => {
                                                 const trailer = await getMovieTrailer(movieId);
@@ -252,10 +253,10 @@ function MoviesDetails({ movieId, onClose }) {
                                                 }
                                             }}
                                         >
-                                            <PlayButton />
+                                            <SpecialPlayButton />
                                         </div>
 
-                                        <button
+                                        <div
                                             onClick={() => {
                                                 if (!movie) return;
                                                 if (!isInWatchlist(movie.id) && addToWatchlist) {
@@ -263,24 +264,9 @@ function MoviesDetails({ movieId, onClose }) {
                                                 }
                                                 navigate('/watchlist');
                                             }}
-                                            className={`px-6 py-3 rounded-lg flex items-center gap-2 transition-colors ${movie && isInWatchlist(movie.id) ? 'bg-neutral-700 hover:bg-neutral-600 text-white' : 'bg-neutral-700 hover:bg-neutral-600 text-white'}`}
                                         >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="h-5 w-5"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    d="M12 4v16m8-8H4"
-                                                />
-                                            </svg>
-                                            {movie && isInWatchlist(movie.id) ? 'Go to Watchlist' : 'Add to Watchlist'}
-                                        </button>
+                                            <BookmarkButton />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
