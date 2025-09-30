@@ -157,28 +157,28 @@ const handleNavigation = (section) => {
       <button 
               data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500"
               onClick={() => handleNavigation('home')}
-              className='text-purpel hover:text-purple-400 transition-all'
+              className='text-purpel hover:text-purple-400 transition-all cursor-pointer'
             >
               Home
             </button>
             <button 
               data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2000"
               onClick={() => handleNavigation('trending')}
-              className='text-white hover:text-purple-400 transition-all'
+              className='text-white hover:text-purple-400 transition-all cursor-pointer'
             >
               Trending
             </button>
             <button 
               data-aos="fade-down" data-aos-easing="linear" data-aos-duration="2500"
               onClick={() => handleNavigation('popular')}
-              className='text-white hover:text-purple-400 transition-all'
+              className='text-white hover:text-purple-400 transition-all cursor-pointer'
             >
               Popular
             </button>
             <button 
               data-aos="fade-down" data-aos-easing="linear" data-aos-duration="3000"
               onClick={() => handleNavigation('top-rated')}
-              className='text-white hover:text-purple-400 transition-all'
+              className='text-white hover:text-purple-400 transition-all cursor-pointer'
             >
               Top Rated
             </button>
@@ -192,13 +192,21 @@ const handleNavigation = (section) => {
                   Watchlist
                 </Link>
                 <div className="flex items-center space-x-4">
-                  <span className="text-purple-400">{user.name}</span>
+                  <span 
+                  className="text-purple-400"
+                   data-aos="fade-down"
+                  data-aos-easing="linear"
+                 data-aos-duration="3000"
+                  >
+                 {user.name}
+                  </span>
                   <button
                     onClick={() => {
                       logout();
                       navigate('/');
                     }}
                     className="text-white hover:text-purple-400 transition-all"
+                    data-aos="fade-down" data-aos-easing="linear" data-aos-duration="3000"
                   >
                     Logout
                   </button>

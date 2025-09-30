@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMovies } from '../contex/MoviesContext';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function WatchList() {
   const { watchlist, removeFromWatchlist, openMovieDetails } = useMovies();
+
+  // Scroll to top + initialize AOS
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+  }, []);
 
   if (!watchlist || watchlist.length === 0) {
     return (
@@ -26,8 +34,12 @@ function WatchList() {
         <h1 className='text-2xl md:text-3xl font-bold mb-6'>My Watchlist</h1>
 
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6'>
-          {watchlist.map((movie) => (
-            <div key={movie.id} className='group relative rounded-lg overflow-hidden bg-neutral-800'>
+          {watchlist.map((movie, index) => (
+            <div
+              key={movie.id}
+              className='group relative rounded-lg overflow-hidden bg-neutral-800'
+              data-aos={index % 2 === 0 ? "fade-right" : "fade-left"} // animation based on index
+            >
               <div className='aspect-[2/3] cursor-pointer' onClick={() => openMovieDetails(movie.id)}>
                 <img
                   src={getImageUrl(movie.poster_path, 'w500')}

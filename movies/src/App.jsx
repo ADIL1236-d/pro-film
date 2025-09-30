@@ -15,6 +15,7 @@ function App() {
   return (
     <AuthProvider>
       <MoviesProvider>
+        <ScrollToTop />
         <BrowserRouter>
           <div className='min-h-screen text-white bg-neutral-900'>
             <div className="">
