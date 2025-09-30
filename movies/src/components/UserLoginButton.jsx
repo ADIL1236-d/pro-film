@@ -27,7 +27,7 @@ const StyledWrapper = styled.div`
     transition: 0.3s ease;
     background: linear-gradient(
       to bottom right,
-      #2e8eff 0%,
+      #a609abff 0%,
       rgba(46, 142, 255, 0) 30%
     );
     background-color: rgba(46, 142, 255, 0.2);
@@ -38,8 +38,8 @@ const StyledWrapper = styled.div`
 
   .user-profile:hover,
   .user-profile:focus {
-    background-color: rgba(46, 142, 255, 0.7);
-    box-shadow: 0 0 10px rgba(46, 142, 255, 0.5);
+    background-color: rgba(148, 2, 145, 0.7);
+    box-shadow: 0 0 10px rgba(154, 12, 147, 0.5);
     outline: none;
   }
 

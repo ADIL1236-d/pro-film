@@ -8,8 +8,61 @@ import 'aos/dist/aos.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Clapperboard from './Clapperboard';
 import UserLoginButton from './UserLoginButton';
+import styled from 'styled-components';
+
 AOS.init();
 
+const LogoutButton = () => {
+  return (
+    <StyledWrapper>
+      <a className="logout-link">
+        <div className="buuton">LOGOUT</div>
+        <div className="back" />
+      </a>
+    </StyledWrapper>
+  );
+}
+
+const StyledWrapper = styled.div`
+  .logout-link {
+    color: white;
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: middle; /* Add this */
+  }
+  .buuton {
+    font-weight: 600;
+    border-radius: 2em;
+    padding: 0.5rem 1.2rem;
+    background-color: rgba(255, 255, 255, 0.253);
+    backdrop-filter: blur(10px);
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .back {
+    position: absolute;
+    background: linear-gradient(20deg, rgb(174, 6, 216) 0%, rgb(85, 31, 200));
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    border-radius: 2em;
+    box-shadow: -5px 0 10px rgb(140, 12, 147), 5px 0 10px rgb(85, 31, 200);
+    transform: translateY(10px);
+  }
+  .buuton:hover {
+    transform: translateY(10px);
+    box-shadow: -10px 0 50px rgba(241, 0, 108, 0.352),
+      10px 0 50px rgb(85, 31, 200);
+  }`;
 
 function Navbar() {
   const {openMovieDetails} = useMovies();
@@ -132,6 +185,12 @@ const handleNavigation = (section) => {
   setIsMobileMenuOpen(false);
 };
 
+const handleLogout = () => {
+  logout();
+  navigate('/');
+  setIsMobileMenuOpen(false);
+};
+
     return ( 
     <header 
     className={`fixed w-full z-50 transition-all duration-300 ${
@@ -153,7 +212,7 @@ const handleNavigation = (section) => {
       </button>
     </div>
     {/* desktop menu */}
-    <nav className='hidden md:flex space-x-8'>
+    <nav className='hidden md:flex space-x-8 items-center'> {/* Added items-center here */}
       <button 
               data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500"
               onClick={() => handleNavigation('home')}
@@ -187,13 +246,13 @@ const handleNavigation = (section) => {
                 <Link 
                   data-aos="fade-down" data-aos-easing="linear" data-aos-duration="3000"
                   to="/watchlist"
-                  className='text-white hover:text-purple-400 transition-all'
+                  className='text-white hover:text-purple-400 transition-all flex items-center' // Added flex items-center
                 >
                   Watchlist
                 </Link>
                 <div className="flex items-center space-x-4">
                   <span 
-                  className="text-purple-400"
+                  className="text-purple-400 flex items-center" // Added flex items-center
                    data-aos="fade-down"
                   data-aos-easing="linear"
                  data-aos-duration="3000"
@@ -201,14 +260,11 @@ const handleNavigation = (section) => {
                  {user.name}
                   </span>
                   <button
-                    onClick={() => {
-                      logout();
-                      navigate('/');
-                    }}
-                    className="text-white hover:text-purple-400 transition-all"
+                    onClick={handleLogout}
+                    className="cursor-pointer flex items-center" // Added flex items-center
                     data-aos="fade-down" data-aos-easing="linear" data-aos-duration="3000"
                   >
-                    Logout
+                    <LogoutButton />
                   </button>
                 </div>
               </>
@@ -219,6 +275,7 @@ const handleNavigation = (section) => {
                   data-aos-easing="linear"
                   data-aos-duration="3000"
                   to="/login"
+                  className="flex items-center" // Added flex items-center
                 >
                   <UserLoginButton />
                 </Link>
@@ -227,6 +284,7 @@ const handleNavigation = (section) => {
                   data-aos-easing="linear"
                   data-aos-duration="3000"
                   to="/register"
+                  className="flex items-center" // Added flex items-center
                 >
                   <AnimatedButton text="Sign Up" />
                 </Link>
@@ -421,17 +479,13 @@ const handleNavigation = (section) => {
                   >
                     Watchlist
                   </Link>
-                  <div className="py-2">
-                    <span className="block text-purple-400 mb-2">{user.name}</span>
+                  <div className="py-2 flex flex-col space-y-2">
+                    <span className="block text-purple-400">{user.name}</span>
                     <button
-                      onClick={() => {
-                        logout();
-                        navigate('/');
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="text-white hover:text-purple-400 transition-colors w-full text-left"
+                      onClick={handleLogout}
+                      className="w-full text-left"
                     >
-                      Logout
+                      <LogoutButton />
                     </button>
                   </div>
                 </>
@@ -440,12 +494,14 @@ const handleNavigation = (section) => {
                   <Link
                     to="/login"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex justify-start"
                   >
                     <UserLoginButton />
                   </Link>
                   <Link
                     to="/register"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex justify-start"
                   >
                     <AnimatedButton text="Sign Up" />
                   </Link>
