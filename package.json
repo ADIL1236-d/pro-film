@@ -1,0 +1,23 @@
+{
+  "name": "pro-film",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ADIL1236-d/pro-film.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ADIL1236-d/pro-film/issues"
+  },
+  "homepage": "https://github.com/ADIL1236-d/pro-film#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

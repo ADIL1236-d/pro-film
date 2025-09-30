@@ -7,6 +7,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link, useNavigate } from 'react-router-dom';
 import Clapperboard from './Clapperboard';
+import UserLoginButton from './UserLoginButton';
 AOS.init();
 
 
@@ -210,9 +211,8 @@ const handleNavigation = (section) => {
                   data-aos-easing="linear"
                   data-aos-duration="3000"
                   to="/login"
-                  className="text-white hover:text-purple-400 transition-all"
                 >
-                  Login
+                  <UserLoginButton />
                 </Link>
                 <Link
                   data-aos="fade-down"
@@ -432,9 +432,8 @@ const handleNavigation = (section) => {
                   <Link
                     to="/login"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-white hover:text-purple-400 transition-colors"
                   >
-                    Login
+                    <UserLoginButton />
                   </Link>
                   <Link
                     to="/register"
