@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useMovies } from '../contex/MoviesContext';
 import { fetchMoviesByGenre } from '../servise/api';
+import JoinButton from './JoinButton';
 
 function GenreSection() {
   const {genres, loading, openMovieDetails} = useMovies();
@@ -102,21 +103,9 @@ function GenreSection() {
                 </span>
               </div>
 
-              {/* <button className='w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-md flex items-center justify-center gap-1 transition-all text-sm'>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                View Details
-              </button> */}
+              <div className='flex justify-center opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 mt-3'>
+                <JoinButton onClick={() => openMovieDetails(movie.id)} />
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { getImageUrl } from '../servise/api' // <-- صححت الاسم
 import { useMovies } from "../contex/MoviesContext";
+import JoinButton from './JoinButton';
 
 function MovieSlider({ title, movies, subtitle, id }) {
   const sliderRef = useRef(null);
@@ -127,7 +128,7 @@ function MovieSlider({ title, movies, subtitle, id }) {
                       className="w-full h-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-35"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/40 to-transparent flex-col justify-end p-4 opacity-100 group-hover:opacity-100 transition-all duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/90 via-neutral-900/40 to-transparent flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
                       <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 space-y-3">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center space-x-1">
@@ -146,6 +147,9 @@ function MovieSlider({ title, movies, subtitle, id }) {
                           <span className="text-neutral-400 text-sm">
                             {movie.release_date?.substring(0, 4) || "N/A"}
                           </span>
+                        </div>
+                        <div className="flex justify-center opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 mt-3">
+                          <JoinButton onClick={(e) => { e.stopPropagation(); openMovieDetails(movie.id); }} />
                         </div>
                       </div>
                     </div>

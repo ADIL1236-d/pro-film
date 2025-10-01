@@ -1,63 +1,22 @@
 import React from 'react';
-import styled from 'styled-components';
 import UsersIcon from './UsersIcon';
 
 const UserLoginButton = () => {
   return (
-    <StyledWrapper>
-      <div aria-label="User Login Button" tabIndex={0} role="button" className="user-profile">
-        <div className="user-profile-inner">
-          <UsersIcon width={27} height={27} strokeWidth={1.5} />
-          <p>Log In</p>
-        </div>
-      </div>
-    </StyledWrapper>
+    <button aria-label="User Login Button" className="relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group cursor-pointer">
+      <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-mr-4 group-hover:-mt-4">
+        <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white" />
+      </span>
+      <span className="absolute bottom-0 rotate-180 left-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-ml-4 group-hover:-mb-4">
+        <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white" />
+      </span>
+      <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full bg-indigo-600 rounded-md group-hover:translate-x-0" />
+      <span className="relative w-full flex items-center gap-2 text-white transition-colors duration-200 ease-in-out group-hover:text-white">
+        <UsersIcon width={20} height={20} strokeWidth={1.5} />
+        <span>Log In</span>
+      </span>
+    </button>
   );
 }
-
-const StyledWrapper = styled.div`
-  .user-profile {
-    width: 131px;
-    height: 51px;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s ease;
-    background: linear-gradient(
-      to bottom right,
-      #680463ff 0%,
-      rgba(150, 44, 150, 0) 30%
-    );
-    background-color: rgba(116, 5, 101, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .user-profile:hover,
-  .user-profile:focus {
-    background-color: rgba(221, 7, 210, 0.7);
-    box-shadow: 0 0 10px rgba(161, 6, 167, 0.5);
-    outline: none;
-  }
-
-  .user-profile-inner {
-    width: 127px;
-    height: 47px;
-    border-radius: 13px;
-    background-color: rgba(26, 26, 26, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    color: #fff;
-    font-weight: 600;
-  }
-
-  .user-profile-inner svg {
-    width: 27px;
-    height: 27px;
-    fill: #fff;
-  }
-`;
 
 export default UserLoginButton;
