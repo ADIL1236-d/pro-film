@@ -160,31 +160,19 @@ function Footer() {
                         />
                     </div>
                     
-                    {/* الزر المخصص بدلاً من الزر العادي */}
-                    <button data-aos="fade-down-right"
+                    {/* Replaced with provided Subscribe button */}
+                    <button
                       type="button"
                       onClick={handleSubscribe}
-                      className="relative w-full h-[40px] rounded-[10px] border-none cursor-pointer overflow-hidden
-                                 bg-gradient-to-r from-purple-800 via-purple-500 via-purple-600 via-purple-700 via-purple-500 to-purple-800
-                                 bg-[length:250%] bg-left
-                                 text-purple-200 font-medium
-                                 transition-all duration-1000 ease-in-out
-                                 hover:bg-right
-                                 active:scale-95
-                                 flex items-center justify-center text-sm"
+                      className="relative px-8 py-2 bg-black text-white font-semibold rounded-lg border-2 border-purple-500 hover:border-purple-400 transition-all duration-300 hover:shadow-[0_0_20px_10px_rgba(168,85,247,0.6)] active:scale-95 active:shadow-[0_0_10px_5px_rgba(168,85,247,0.4)] group w-full"
                     >
-                      {/* الخلفية السوداء */}
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-                                      w-[97%] h-[90%] rounded-[8px]
-                                      bg-black/[0.842]
-                                      transition-all duration-1000 ease-in-out
-                                      z-0">
-                      </div>
-                      
-                      {/* النص */}
-                      <span className="relative z-10 text-purple-300 font-medium">
-                        Subscribe
+                      <span className="flex items-center justify-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" className="w-6 h-6 text-purple-500 group-hover:text-white transition-colors duration-300">
+                          <path d="M5 13l4 4L19 7" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
+                        </svg>
+                        <span>Subscribe</span>
                       </span>
+                      <span className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-purple-500/20 to-indigo-500/20" />
                     </button>
                 </form>
                </div>

@@ -1,16 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import UsersIcon from './UsersIcon';
 
 const UserLoginButton = () => {
   return (
     <StyledWrapper>
       <div aria-label="User Login Button" tabIndex={0} role="button" className="user-profile">
         <div className="user-profile-inner">
-          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <g data-name="Layer 2" id="Layer_2">
-              <path d="m15.626 11.769a6 6 0 1 0 -7.252 0 9.008 9.008 0 0 0 -5.374 8.231 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 9.008 9.008 0 0 0 -5.374-8.231zm-7.626-4.769a4 4 0 1 1 4 4 4 4 0 0 1 -4-4zm10 14h-12a1 1 0 0 1 -1-1 7 7 0 0 1 14 0 1 1 0 0 1 -1 1z" />
-            </g>
-          </svg>
+          <UsersIcon width={27} height={27} strokeWidth={1.5} />
           <p>Log In</p>
         </div>
       </div>
@@ -27,10 +24,10 @@ const StyledWrapper = styled.div`
     transition: 0.3s ease;
     background: linear-gradient(
       to bottom right,
-      #a609abff 0%,
-      rgba(46, 142, 255, 0) 30%
+      #680463ff 0%,
+      rgba(150, 44, 150, 0) 30%
     );
-    background-color: rgba(46, 142, 255, 0.2);
+    background-color: rgba(116, 5, 101, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,8 +35,8 @@ const StyledWrapper = styled.div`
 
   .user-profile:hover,
   .user-profile:focus {
-    background-color: rgba(148, 2, 145, 0.7);
-    box-shadow: 0 0 10px rgba(154, 12, 147, 0.5);
+    background-color: rgba(221, 7, 210, 0.7);
+    box-shadow: 0 0 10px rgba(161, 6, 167, 0.5);
     outline: none;
   }
 
@@ -47,7 +44,7 @@ const StyledWrapper = styled.div`
     width: 127px;
     height: 47px;
     border-radius: 13px;
-    background-color: #1a1a1a;
+    background-color: rgba(26, 26, 26, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;

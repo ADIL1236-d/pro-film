@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useMovies } from '../contex/MoviesContext';
-import { getImageUrl } from '../servise/api';
+import { getImageUrl, getMovieTrailer } from '../servise/api';
 import SpecialPlayButton from './SpecialPlayButton';
 import BookmarkButton from './BookmarkButton';
 
 function HeroSection() {
-  const {trendingMovies, loading} = useMovies();
+  const {trendingMovies, loading, addToWatchlist} = useMovies();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false); 
+  const [trailerUrl, setTrailerUrl] = useState(null);
+  const [showTrailer, setShowTrailer] = useState(false);
   
   const featuredMovies = trendingMovies.slice(0, 5);
 
@@ -149,7 +151,16 @@ function HeroSection() {
                 data-aos-delay="600"
                 className="relative z-10"
               >
-                <SpecialPlayButton />
+                <SpecialPlayButton onClick={async () => {
+                  if (!currentMovie) return;
+                  const url = await getMovieTrailer(currentMovie.id);
+                  if (url) {
+                    setTrailerUrl(url);
+                    setShowTrailer(true);
+                  } else {
+                    alert('No trailer available for this movie');
+                  }
+                }} />
               </div>
               
               <div
@@ -157,7 +168,10 @@ function HeroSection() {
                 data-aos-duration="800"
                 data-aos-delay="800"
               >
-                <BookmarkButton />
+                <BookmarkButton onClick={() => {
+                  if (!currentMovie) return;
+                  addToWatchlist(currentMovie);
+                }} />
               </div>
             </div>
           </div>
@@ -184,6 +198,27 @@ function HeroSection() {
           />
         ))}
       </div>
+      {/* Trailer Modal */}
+      {showTrailer && trailerUrl && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/90">
+          <div className="relative w-full max-w-4xl aspect-video">
+            <button
+              onClick={() => { setShowTrailer(false); setTrailerUrl(null); }}
+              className="absolute -top-10 right-0 p-2 text-white hover:text-gray-300"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <iframe
+              src={trailerUrl}
+              className="w-full h-full"
+              allowFullScreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            ></iframe>
+          </div>
+        </div>
+      )}
     </div>
   ); 
 }

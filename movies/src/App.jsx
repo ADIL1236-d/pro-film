@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from "./components/Navbar";
 import MovieContent from "./components/MovieContent";
 import Footer from "./components/Footer";
@@ -10,17 +10,34 @@ import WatchList from './pages/WatchList';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ProtectedRoute from './components/ProtectedRoute';
+import Loader from './components/Loader';
+import styled from 'styled-components';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <AuthProvider>
       <MoviesProvider>
         <ScrollToTop />
         <BrowserRouter>
-          <div className='min-h-screen text-white bg-neutral-900'>
-            <div className="">
-              <Navbar />
-              <main>
+          {loading ? (
+            <LoaderContainer>
+              <Loader />
+            </LoaderContainer>
+          ) : (
+            <div className='min-h-screen text-white bg-neutral-900'>
+              <div className="">
+                <Navbar />
+                <main>
                 <Routes>
                   <Route path="/" element={<MovieContent />} />
                   <Route 
@@ -46,10 +63,19 @@ function App() {
             <ScrollToTop />
               </div>
             </div>
+          )}
         </BrowserRouter>
       </MoviesProvider>
     </AuthProvider>
   );
 }
+
+const LoaderContainer = styled.div`
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #171717;
+`;
 
 export default App;
